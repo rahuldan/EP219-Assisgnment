@@ -1,3 +1,8 @@
+"""
+Created on Wed Sep 21 15:57:04 2016
+
+@author: Rahul Dandwate
+"""
 import numpy as np
 import matplotlib.pyplot as plt
 
