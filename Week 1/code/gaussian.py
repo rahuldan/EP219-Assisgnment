@@ -1,18 +1,30 @@
-import matplotlib.pyplot as plt
-import numpy as np
+# -*- coding: utf-8 -*-
+"""
+Created on Wed Sep 21 15:57:04 2016
 
-t1 = np.arange(-30.0, 30.0, 0.01)
-s1 = np.exp(-1*(t1)**2 / 2) / np.sqrt(2*np.pi)
-plt.plot(t1, s1, label = 'Mean = 0, S.D. = 1')
+@author: Amey P Gaikwad
+"""
+import matplotlib.pyplot as plt                                                               #importing the
+import numpy as np                                                                            #required 
+from matplotlib.font_manager import FontProperties                                            #libraries 
 
-t2 = np.arange(-30.0, 30.0, 0.01)
-s2 = np.exp(-1*(t2 - 5)**2 / 50) / np.sqrt(2*np.pi*25)
-plt.plot(t2, s2, label = 'Mean = 5, S.D. = 5')
+def gauss(x,u,s):                                                                             #defining a function that returns the value of P(x)
+    y=np.exp(-1*(x-u)*(x-u)/(2*s))/np.sqrt(2*np.pi*s)                                         #for a given value of x where P(x)
+    return y                                                                                  #is the Gaussian distribution
 
-plt.xlabel('X')
-plt.ylabel('Y')
-plt.title('Gaussian Distribution')
-plt.legend(bbox_to_anchor=(1.05, 1), loc=2, borderaxespad=0.)
-plt.grid(True)
-plt.savefig("Gaussian.png")
-plt.show()
+t=np.arange(-30.0,30.0,0.01)                                                                  #sets the range of values of x
+s1=gauss(t,-5,16)                                                                             #gaussian with mean=-5,sd=4
+s2=gauss(t,0,49)                                                                              #gaussian with mean=0,sd=7
+s3=gauss(t,5,25)                                                                              #gaussian with mean=5,sd=5  
+plt.plot(t,s1,'r',label='mean=-5;sd=4')                                                       #plots the first gaussian  
+plt.plot(t,s2,'b',label='mean=0;sd=7')                                                        #plots the second gaussian 
+plt.plot(t,s3,'g',label='mean=5;sd=5')                                                        #plots the third gaussian
+plt.xlabel('x')                                                                               #labels the x axis 
+plt.ylabel('y')                                                                               #labels the y axis
+plt.title('Gaussian distributions\n for different values of the mean and standard deviation') # gives title to the plot
+fontP = FontProperties()                                  
+fontP.set_size('small')                                                                       #set font size to small
+plt.grid(True)  
+plt.legend(loc='upper right',shadow='true',prop = fontP)                                      #legend
+plt.savefig("gauss.png")                                                                      #saves the figure
+plt.show()                                                                                    #shows the plot
