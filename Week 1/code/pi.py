@@ -20,8 +20,9 @@ for j in range(0, 500):
 
 plt.hist(a)
 mean = np.sum(a) / 500.0                                        #sample mean
+print("Value of PI", mean)
 e = abs(a - mean)
-print("Sample Width:", np.sum(np.sqrt(e**2 / 2000)))            #Calulating the sample width of Distribution of mean value PI
+print("Sample Width:", np.sqrt(np.sum((e**2) / 500)))            #Calulating the sample width of Distribution of mean value PI
 print("Error in individual Experiments: \n")
 print(e)
 plt.xlabel('Mean value of PI')
