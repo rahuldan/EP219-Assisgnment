@@ -13,9 +13,9 @@ p1 = 0.5
 N2 = 40
 p2 = 0.7
 x1 = np.arange(0, N1, 1)
-y1 = comb(N1, x1)*(p1**x1)*((1 - p1)**(N1 - x1))        #Bernoulli Distribution with N = 20 and p = 0.5
+y1 = comb(N1, x1)*(p1**x1)*((1 - p1)**(N1 - x1))        #Binomial Distribution with N = 20 and p = 0.5
 x2 = np.arange(0, N2)
-y2 = comb(N2, x2)*(p2**x2)*((1 - p2)**(N2 - x2))        #Bernoulli Distribution with N = 40 and p = 0.7
+y2 = comb(N2, x2)*(p2**x2)*((1 - p2)**(N2 - x2))        #Binomial Distribution with N = 40 and p = 0.7
 
 plt.xlim(xmin=0, xmax=N2)
 plt.xlabel('k', size = 10)
