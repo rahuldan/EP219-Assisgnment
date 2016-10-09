@@ -24,12 +24,13 @@ def gradient_descent():
         theta[1] = theta[1] - (gamma * temp[1] / m[0])
     return theta
 
-def error():
-    y_mean = np.sum(data['y']) / m[0]
-    return np.sqrt(np.sum(((data['y'] - y_mean)**2) / (m[0] - 1)))
+def error(theta):
+    a = np.ones(m)
+    X = np.column_stack((data['x'], a))
+    return np.sqrt((np.sum((np.dot(X, theta) - data['y'])**2)) / (m[0] - 1))
 
 theta = gradient_descent()
-error1 = error()
+error1 = error(theta)
 x = np.linspace(0, 10)
 print('Coefficient of linear expansion = ', theta[0], ' mm/Kelvin')
 print('Expected Length at 0 Degree C = ', theta[1], ' mm')
