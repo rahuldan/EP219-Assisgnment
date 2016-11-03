@@ -66,8 +66,9 @@ err_int_b_min, err_int_b_max = error_b()
 print("error interval of a: ", err_int_a_min, err_int_a_max)
 print("error interval of b: ", err_int_b_min, err_int_b_max)
 
-print(a, b)
-print(error)
+print('coefficient of linear expansion (m): ', a)
+print('expected length at 0 degree C (c): ', b)
+print('error in estimation of length: ', error)
 
 s = np.arange(a - 10, a + 10, 0.1)
 t = np.arange(b - 30, b + 30, 0.1)
