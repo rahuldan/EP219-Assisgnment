@@ -1,3 +1,8 @@
+"""
+Created on Wed Nov 2 2016
+
+@author: Rahul Dandwate
+"""
 import numpy as np
 import matplotlib.pyplot as plt
 
@@ -39,15 +44,37 @@ theta = np.array([a, b])
 error = error(theta)
 L_max = log_likelihood(a, b)
 
+def error_b():
+    p = np.zeros(3)
+    p[0] = N
+    p[1] = (2 * a * A) - (2 * C)
+    p[2] = E + ((a ** 2) * B) - (2 * a * D) - (error ** 2) - L_max
+    error_val = np.roots(p)
+    return error_val
+
+def error_a():
+    p = np.zeros(3)
+    p[0] = B
+    p[1] = (2 * b * A) - (2 * D)
+    p[2] = E + (N * (b ** 2)) - (2 * b * C) - (error ** 2) - L_max
+    error_val = np.roots(p)
+    return error_val
+
+err_int_a_min, err_int_a_max = error_a()
+err_int_b_min, err_int_b_max = error_b()
+
+print("error interval of a: ", err_int_a_min, err_int_a_max)
+print("error interval of b: ", err_int_b_min, err_int_b_max)
+
 print(a, b)
 print(error)
 
 s = np.arange(a - 10, a + 10, 0.1)
 t = np.arange(b - 30, b + 30, 0.1)
 x, y = np.meshgrid(s, t)
-F = ((x**2) * B) + (N * (y**2)) + (E) + (2 * x * y * A) - (2 * y * C) - (2 * x * D)
-G1 = (2 * (error**2)) + L_max
-G2 = (4 * 2 * (error**2)) + L_max
+F = ((x ** 2) * B) + (N * (y ** 2)) + (E) + (2 * x * y * A) - (2 * y * C) - (2 * x * D)
+G1 = (2 * (error ** 2)) + L_max
+G2 = (4 * 2 * (error ** 2)) + L_max
 
 CS1 = plt.contour(x, y, (F - G1), [0], colors = 'r')
 CS2 = plt.contour(x, y, (F - G2), [0])
